@@ -48,19 +48,45 @@ public class UserService {
 		return isUserCreated;
 	}
 
-	public boolean updateUser(User user, int id) {
-		boolean isUserCreated = false;
+	public boolean updateUserUsingPut(User user, int id) {
+		boolean isUserUpdated = false;
 
 		for (int i = 0; i < users.size(); i++) {
 			if (users.get(i).getId() == id) {
 				users.get(i).setName(user.getName());
 				users.get(i).setGender(user.getGender());
 				users.get(i).setSalary(user.getSalary());
-				isUserCreated = true;
+				isUserUpdated = true;
 			}
 		}
 		
-		return isUserCreated;
+		return isUserUpdated;
+
+	}
+	
+	public boolean updateUserUsingPatch(User user, int id) {
+		boolean isUserUpdated = false;
+
+		for (int i = 0; i < users.size(); i++) {
+			if (users.get(i).getId() == id) {
+				
+				
+				 if(user.getName()!=null) {
+					 users.get(i).setName(user.getName());
+				}
+				 if(user.getSalary()!=0.0) {
+					 users.get(i).setSalary(user.getSalary());
+				 }
+				 if(user.getGender()!=Character.MIN_VALUE) {
+					 users.get(i).setGender(user.getGender());
+				 }
+				isUserUpdated = true;
+			}
+			
+			
+		}
+		
+		return isUserUpdated;
 
 	}
 
